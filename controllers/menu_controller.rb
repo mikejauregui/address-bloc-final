@@ -128,9 +128,9 @@ class MenuController
     print "Enter the number of the entry you would like to see: "
     selection = gets.chomp.to_i
 
-    if selection < @address_book.entries.count
+    if (selection - 1) < @address_book.entries.count
       puts "Here's the contact info"
-      puts @address_book.entries.each_with_index.select {|value, index| index == selection}
+      puts @address_book.entries.each_with_index.select {|value, index| index == selection -1}
       gets.chomp
       system "clear"
     else
