@@ -160,6 +160,10 @@ class MenuController
     puts "#{entry.name} has been deleted"
   end
 
+  def delete_all_entries
+    @address_book.entries.clear
+  end
+
   def edit_entry(entry)
     print "Updated name: "
     name = gets.chomp
@@ -185,8 +189,10 @@ class MenuController
 
     case selection
     when "n"
-    @address_book.clear
+    system "clear"
+    delete_all_entries
     puts "All entries have been deleted"
+
     main_menu
 
     when "m"
