@@ -15,6 +15,7 @@ class MenuController
     puts "3 - Search for an entry"
     puts "4 - Import entries from a CSV"
     puts "5 - Exit"
+    puts "6 - Nuke!"
     print "Enter your selection: "
 
     selection = gets.to_i
@@ -44,6 +45,11 @@ class MenuController
       puts "Good-bye!"
 
       exit(0)
+
+    when 6
+      system "clear"
+      nuke
+      main_menu
 
     else
       system "clear"
@@ -128,7 +134,7 @@ class MenuController
       search_submenu(entry)
     end
   end
-      git
+
   def read_csv
     print "Enter CSV file to import: "
     file_name = gets.chomp
@@ -171,6 +177,24 @@ class MenuController
     puts entry
   end
 
+  def nuke
+    puts "n - to nuke the database and erase all entries"
+    puts "m - to return to the main menu"
+
+    selection = gets.chomp
+
+    case selection
+    when "n"
+    @address_book.clear
+    puts "All entries have been deleted"
+    main_menu
+
+    when "m"
+    system "clear"
+    main_menu
+    end
+  end
+
   def entry_submenu(entry)
 
     puts "n - next entry"
@@ -201,5 +225,4 @@ class MenuController
       entry_submenu(entry)
     end
   end
-
 end
